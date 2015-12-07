@@ -8,6 +8,11 @@ java fun.Ip2Long class
 java fun.Ip2Loc class
 jar cvf iputils.jar ./fun
 
-
 #test
-#hive -e " add jar iputils.jar; create temporary function Ip2Long as 'fun.Ip2Long'; select Ip2Long('192.168.1.1') from tmp.mw;"
+hive -e"add jar iputils.jar;
+        create temporary function Ip2Long as 'fun.Ip2Long';
+        select Ip2Long('192.168.1.1') from tmp.mw_test;
+        
+        create temporary function Ip2Loc as 'fun.Ip2Loc';
+        ADD FILE ./colombo_iplib.txt;
+        select Ip2Loc(ip, './colombo_iplib.txt') from tmp.mw_test3;"
