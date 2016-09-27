@@ -17,3 +17,5 @@ create temporary function Ip2Loc as 'fun.Ip2Loc';
 ADD FILE ./colombo_iplib.txt;
 select Ip2Loc(ip, './colombo_iplib.txt') from tmp.testip;
 ```
+Ip2Loc return：hashmap：{isp=FOUNDERBN, province=北京, zone=朝阳, city=北京, country=CN}   运营商 省    区（zone） 市（city）  国。
+Ip2Long return 0 if error
